@@ -37,8 +37,7 @@
 
         <p class="desc">{{ summary }} </p>
 
-        <div class="buttons" 
-        :class="`bg-${this.color}`">
+        <div class="buttons" >
 
             <div class="select-value">
                 <select  
