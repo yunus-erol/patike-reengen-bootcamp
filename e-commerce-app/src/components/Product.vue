@@ -10,14 +10,14 @@
 
             <div class="sizes" >
 
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">38</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">39</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">40</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">41</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">42</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">43</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">44</div>
-                <div class="size" :class="`border-color-${this.color} ${this.color}`">45</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">38</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">39</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">40</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">41</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">42</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">43</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">44</div>
+                <div @click="selectedSize" class="size" :class="`border-color-${this.color} ${this.color} size-${this.color}`">45</div>
             </div>
             </div>
     </div>
@@ -37,12 +37,13 @@
 
         <p class="desc">{{ summary }} </p>
 
-        <div class="buttons" 
-        :class="`bg-${this.color}`">
+        <div class="buttons" >
 
             <div class="select-value">
                 <select  
-                :class="this.color" name="value" id="value">
+                :class= "this.color"  
+                name="value" 
+                id="value">
 
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -79,17 +80,40 @@ export default {
   color:String,
   price:Number,
   star:Number,
-  img:String
-},
+  img:String,
+  },
+  data(){
+      return {
+          setSize : null,
+          //computedSize : null
+      }
+  },
   components: {
     Rating,
   },
+  computed: {},
+  methods: {
+      selectedSize(e){
+        const sizes = document.querySelectorAll(`.focus`)
+        sizes.forEach(element => {
+            element.classList.remove("focus");
+            })
+        e.target.classList.add("focus");
+        this.setSize = e.target.innerText
+        this.price = this.setSize * 5
+      }
+  }
        
     
 }
 
 </script>
 <style>
+
+.focus{
+    background-color:#90fde2;
+    color: #F5F5F5;
+}
 .pink{
     color:#C3A1A0;
 }
@@ -197,9 +221,15 @@ button{
     font-size: 0.7em;
     margin-right: 3px;
 }
-.size:hover{
+.size-pink:hover{
     background-color:#C3A1A0;
+    color: #F5F5F5;
 }
+.size-blue:hover{
+    background-color:#7ccde6;
+    color: #F5F5F5;
+}
+
 img {
   width: 300px;
 }
