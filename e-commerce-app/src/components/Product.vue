@@ -58,8 +58,8 @@
 
                 </select>
             </div>
-            <button class="add white" 
-            :class="`bg-${this.color}`">Add to Cart</button>
+            <button @click="addToBasket" class="add white" 
+            :class="`bg-${this.color}`" >Add to Cart</button>
 
         </div>
     </div>
@@ -101,7 +101,11 @@ export default {
         e.target.classList.add("focus");
         this.setSize = e.target.innerText
         this.price = this.setSize * 5
-      }
+      },
+      addToBasket(val) {
+       this.$emit('addProduct', val);
+       console.log(val)
+  }
   }
        
     

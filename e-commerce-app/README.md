@@ -1,5 +1,5 @@
 # e-commerce-app
-Live Demo : patike-reengen-bootcamp.vercel.app
+Live Demo : https://patike-reengen-bootcamp.vercel.app
 ## Project setup
 ```
 npm install
